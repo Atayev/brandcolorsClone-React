@@ -1,24 +1,52 @@
-import logo from './logo.svg';
+import Sidebar from './components/Sidebar';
+import Content from './components/Content';
 import './App.css';
-
+import MainContext from './components/Context';
+import BrandsData from './barBrands.json'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {useEffect, useState} from 'react'
 function App() {
+    const brandsArray = []
+    Object.keys(BrandsData).map((key)=>(
+        brandsArray.push(BrandsData[key])
+    ))
+    const [brands,setBrands] = useState(brandsArray)
+    const [selectedBrands,setSelectedBrands] = useState([])
+    const [copied,setCopied] = useState(false)
+    const [search,setSearch] = useState('')
+  
+  const data = {
+    brands,
+    selectedBrands,
+    setSelectedBrands,
+    setCopied,
+    search,
+    setSearch,
+  }
+
+  useEffect(()=>{
+    console.log(selectedBrands)
+  },[selectedBrands])
+
+  useEffect(()=>{
+    setBrands(brandsArray.filter(brand=>brand.title.toLowerCase().includes(search)))
+  },[search])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <MainContext.Provider value={data}>
+      <Sidebar/>
+      <Content />
+      <ToastContainer 
+      position="bottom-right"
+      closeOnClick
+      color={copied}
+      
+      />
+      </MainContext.Provider>
+      
+    </>
   );
 }
 
