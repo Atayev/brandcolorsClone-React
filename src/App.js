@@ -1,11 +1,13 @@
+import {useEffect, useState} from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Content from './components/Content';
 import './App.css';
 import MainContext from './components/Context';
 import BrandsData from './barBrands.json'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useEffect, useState} from 'react'
+import Collections from './components/Collections';
 function App() {
     const brandsArray = []
     Object.keys(BrandsData).map((key)=>(
@@ -28,16 +30,23 @@ function App() {
   useEffect(()=>{
     console.log(selectedBrands)
   },[selectedBrands])
-
+  
   useEffect(()=>{
     setBrands(brandsArray.filter(brand=>brand.title.toLowerCase().includes(search)))
+    // eslint-disable-next-line
   },[search])
+  
 
   return (
     <>
     <MainContext.Provider value={data}>
       <Sidebar/>
-      <Content />
+      <Router>
+        <Routes>
+          <Route path='/' element={ <Content />} />
+          <Route path='/collections/:slugs' element={<Collections />}/>
+        </Routes>
+      </Router>
       <ToastContainer 
       position="bottom-right"
       closeOnClick

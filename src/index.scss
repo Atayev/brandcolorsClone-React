@@ -110,6 +110,23 @@ html,body {
     display: flex;
     position: sticky;
     top: 0;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    .backBtn {
+      background: transparent;
+      font-size: .9em;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      svg {
+        display: block;
+        margin-right:5px;
+        width: 20px;
+        height: 20px;
+      }
+    }
     .search {
       flex: 1;
       position: relative;
@@ -136,6 +153,7 @@ html,body {
       }
     }
   }
+
   .brands {
     padding: 25px;
     .brand {
@@ -175,6 +193,51 @@ html,body {
           width: 70px;
         }
       }
+    }
+  }
+  .download {
+    padding-right: 25px;
+    display: flex;
+    align-items: center;
+    .actions {
+      display: flex;
+      margin-right: 15px;
+      a, button {
+        height: 40px;
+        width: 40px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+          svg {
+            width: 15px;
+            height: 15px;
+          }
+      }
+    }
+    .selected {
+      font-size: .9em;
+      font-weight: 500;
+      color: #999;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+        svg {
+            display: block;
+            margin-right: 5px;
+          }
+    }
+    select {
+      padding: 0 15px;
+      border: 1px solid #ddd;
+      background: #f8f8f8;
+      appearance: none;
+      border: 5px;
+      text-align: center;
+      margin-right: 5px;
+      cursor: pointer;
     }
   }
 }

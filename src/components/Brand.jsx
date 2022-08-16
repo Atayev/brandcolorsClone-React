@@ -4,7 +4,7 @@ import MainContext from './Context'
 import Clipboard from 'react-clipboard.js';
 import {toast} from 'react-toastify'
 function Brand({brand}) {
-  const {selectedBrands,setSelectedBrands,setCopied}=useContext(MainContext)
+  const {selectedBrands,setSelectedBrands}=useContext(MainContext)
   const toggleSelected = ()=> {
     if (selectedBrands.includes(brand.slug)){
         setSelectedBrands(selectedBrands.filter(slug=>slug!==brand.slug))

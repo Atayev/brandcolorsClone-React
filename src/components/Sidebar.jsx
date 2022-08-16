@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import Modal from 'react-modal'
 import {useState} from 'react'
@@ -21,7 +22,10 @@ function Sidebar() {
         </div>
         <nav className='menu'>
             <ul>
-                <li><a onClick={toggleModal}>About BrandColors</a></li>
+                <li>
+                  
+                <a onClick={toggleModal}>About BrandColors</a>
+                </li>
             </ul>
         </nav>
     </div>
